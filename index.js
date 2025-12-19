@@ -45,3 +45,33 @@ const bookStore = {
 
 // Write your code here!
 
+// Update the header to the store name
+const header = document.getElementById('header');
+if (header) header.textContent = bookStore.name;
+
+// Populate the book list
+const bookList = document.getElementById('book-list');
+if (bookList) {
+    // clear any example/template items
+    bookList.innerHTML = '';
+
+    bookStore.books.forEach(book => {
+        const li = document.createElement('li');
+
+        const title = document.createElement('h3');
+        title.textContent = book.title;
+
+        const author = document.createElement('p');
+        author.textContent = book.author;
+
+        const img = document.createElement('img');
+        img.src = book.imageUrl;
+
+        li.appendChild(title);
+        li.appendChild(author);
+        li.appendChild(img);
+
+        bookList.appendChild(li);
+    });
+}
+
